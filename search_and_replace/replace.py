@@ -65,7 +65,7 @@ while True:
     translations = zendesk.help_center_article_translations(article_id=article['id'], locales=args.locale)
     for translation in translations['translations']:
       for i in range(0, len(args.old)):
-        if args.old[i] not in translation['body']:
+        if translation['body'] is None or args.old[i] not in translation['body']:
           continue
 
         print('='*200)
